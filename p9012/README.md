@@ -1,0 +1,2 @@
+- Stack
+- Check if parentheses are valid 
