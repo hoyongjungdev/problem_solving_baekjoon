@@ -1,9 +1,9 @@
-package com.example.p1769;
+package p1769;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         var sc = new Scanner(System.in);
         var str = sc.nextLine();
         var cnt = 0;
