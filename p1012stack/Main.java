@@ -22,6 +22,9 @@ public class Main {
   private int n;
   private int m;
 
+  int[] dy = new int[]{1, -1, 0, 0};
+  int[] dx = new int[]{0, 0, 1, -1};
+
   public static void main(String[] args) {
     var main = new Main();
     var sc = new Scanner(System.in);
@@ -65,7 +68,9 @@ public class Main {
   }
 
   public int dfs(int y, int x) {
-    int found = 0;
+    if (this.map[y][x] == 0 || this.visited[y][x] == 1) {
+      return 0;
+    }
 
     var stack = new Stack<Pair>();
 
@@ -75,22 +80,24 @@ public class Main {
       var pair = stack.peek();
       stack.pop();
 
-      if (pair.y < 0 || pair.y >= n || pair.x < 0 || pair.x >= m) {
-        continue;
-      }
-
-      if (this.map[pair.y][pair.x] == 0 || this.visited[pair.y][pair.x] == 1) {
-        continue;
-      }
-
-      found = 1;
       this.visited[pair.y][pair.x] = 1;
-      stack.push(new Pair(pair.y + 1, pair.x));
-      stack.push(new Pair(pair.y - 1, pair.x));
-      stack.push(new Pair(pair.y, pair.x + 1));
-      stack.push(new Pair(pair.y, pair.x - 1));
+
+      for (int i = 0; i < 4; i++) {
+        var ny = pair.y + dy[i];
+        var nx = pair.x + dx[i];
+
+        if (ny < 0 || ny >= n || nx < 0 || nx >= m) {
+          continue;
+        }
+
+        if (this.map[ny][nx] == 0 || this.visited[ny][nx] == 1) {
+          continue;
+        }
+
+        stack.push(new Pair(ny, nx));
+      }
     }
 
-    return found;
+    return 1;
   }
 }
