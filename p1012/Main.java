@@ -46,18 +46,23 @@ public class Main {
 
     for (int y = 0; y < n; y++) {
       for (int x = 0; x < m; x++) {
-        sum += dfs(y, x);
+        sum += doDfs(y, x);
       }
     }
 
     return sum;
   }
 
-  public int dfs(int y, int x) {
+  public int doDfs(int y, int x) {
     if (this.map[y][x] == 0 || this.visited[y][x] == 1) {
       return 0;
     }
 
+    dfs(y, x);
+    return 1;
+  }
+
+  public void dfs(int y, int x) {
     this.visited[y][x] = 1;
 
     for (int i = 0; i < 4; i++) {
@@ -74,7 +79,5 @@ public class Main {
 
       dfs(ny, nx);
     }
-
-    return 1;
   }
 }
