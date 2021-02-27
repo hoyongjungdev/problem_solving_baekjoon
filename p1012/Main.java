@@ -58,13 +58,13 @@ public class Main {
       return 0;
     }
 
+    this.visited[y][x] = 1;
     dfs(y, x);
+
     return 1;
   }
 
   public void dfs(int y, int x) {
-    this.visited[y][x] = 1;
-
     for (int i = 0; i < 4; i++) {
       var ny = y + dy[i];
       var nx = x + dx[i];
@@ -77,6 +77,7 @@ public class Main {
         continue;
       }
 
+      this.visited[ny][nx] = 1;
       dfs(ny, nx);
     }
   }
