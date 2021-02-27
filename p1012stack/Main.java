@@ -74,13 +74,12 @@ public class Main {
 
     var stack = new Stack<Pair>();
 
+    this.visited[y][x] = 1;
     stack.push(new Pair(y, x));
 
     while (!stack.isEmpty()) {
       var pair = stack.peek();
       stack.pop();
-
-      this.visited[pair.y][pair.x] = 1;
 
       for (int i = 0; i < 4; i++) {
         var ny = pair.y + dy[i];
@@ -94,6 +93,7 @@ public class Main {
           continue;
         }
 
+        visited[ny][nx] = 1;
         stack.push(new Pair(ny, nx));
       }
     }
