@@ -1,0 +1,3 @@
+- DFS using stack
+- Count the number of components
+- https://www.acmicpc.net/problem/1012
